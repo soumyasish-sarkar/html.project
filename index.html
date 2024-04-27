@@ -85,12 +85,12 @@
         }
 
         #neg-edge-page {
-            background: linear-gradient(to bottom right, #ae0616, #965409, #ff3d00);
+            background: linear-gradient(to bottom right, #150436, #4c15ba, #ff3d00);
             color: white;
         }
 
         #shortest-path-page {
-            background: linear-gradient(to bottom right, #150436, #4c15ba, #ff3d00);
+            background: linear-gradient(to bottom right, #01061d, #2a52ca, #01061d );
             color: white;
         }
 
@@ -792,9 +792,12 @@
                     const adjacentVertex = adjacentVertices[i];
                     const edgeWeight = graph[currentVertex][adjacentVertex];
 
-                    if (!visited[adjacentVertex]) {
-                        visited[adjacentVertex] = true;
-                        distances[adjacentVertex] = distances[currentVertex] + edgeWeight;
+                    // Calculate the new distance
+                    const newDistance = distances[currentVertex] + edgeWeight;
+
+                    // Compare the new distance with the existing distance
+                    if (newDistance < distances[adjacentVertex]) {
+                        distances[adjacentVertex] = newDistance;
                         previousVertices[adjacentVertex] = currentVertex;
                         queue.push(adjacentVertex);
                     }
